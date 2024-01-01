@@ -84,3 +84,9 @@ a.reduce((sum, value) => {
 // 1. MDN array methods
 // 2. for loop => array method
 // 3. how to use reduce to do map and filter
+
+// toString()
+// pop() 移除最後一個
+// push() 新增至最後一個.
+// concat() 兩個 Array 接起來
+// forEach() 依序將 Array 中值按 index 印出

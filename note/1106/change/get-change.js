@@ -16,37 +16,76 @@
   - 再將allChange - (硬幣值 * 硬幣數量)
  */
 
-// 在這裡撰寫程式碼
+/* while loop */
+// function getChange(price, paid) {
+//   const change = {
+//     fifty: 0,
+//     ten: 0,
+//     five: 0,
+//     one: 0,
+//   };
+
+//   if (paid < price) {
+//     console.log('付款金額不足');
+//     return change;
+//   }
+
+//   let balance = paid - price;
+
+//   while (balance > 0) {
+//     if (balance >= 50) {
+//       change.fifty = Math.floor(balance / 50);
+//       balance -= 50 * change.fifty;
+//     } else if (balance >= 10) {
+//       change.ten = Math.floor(balance / 10);
+//       balance -= 10 * change.ten;
+//     } else if (balance >= 5) {
+//       change.five = Math.floor(balance / 5);
+//       balance -= 5 * change.five;
+//     } else {
+//       change.one = balance;
+//       balance = 0;
+//     }
+//   }
+//   return change;
+// }
+/* forEach */
+
 function getChange(price, paid) {
+  if (paid < price) {
+    console.log('付款金額不足');
+    return null;
+  }
+
+  let balance = paid - price;
   const change = {
+    // 存要找的零錢個數
     fifty: 0,
     ten: 0,
     five: 0,
     one: 0,
   };
-
-  if (paid < price) {
-    console.log('付款金額不足');
-    return change;
-  }
-
-  let balance = paid - price;
-
-  while (balance > 0) {
-    if (balance >= 50) {
-      change.fifty = Math.floor(balance / 50);
-      balance = balance - 50 * change.fifty;
-    } else if (balance >= 10) {
-      change.ten = Math.floor(balance / 10);
-      balance = balance - 10 * change.ten;
-    } else if (balance >= 5) {
-      change.five = Math.floor(balance / 5);
-      balance = balance - 5 * change.five;
-    } else {
-      change.one = balance;
-      balance = 0;
-  }
-
+  const denominations = [50, 10, 5, 1]; // 強制Object.keys 依照 Array 順序
+  const denominationNames = {
+    // Object.keys 要遍歷的 key 50 => 1
+    50: 'fifty',
+    10: 'ten',
+    5: 'five',
+    1: 'one',
+  };
+  // 問題 Object.keys 會從 1 開始跑沒辦法達到要求
+  // Object.keys(denominations).forEach(value => {
+  //   const key = denominations[value]; // 拿到 50
+  //   change[key] = Math.floor(balance / value);
+  //   // 算出應找個數存到 change
+  //   balance -= change[key] * value;
+  // });
+  denominations.forEach(value => {
+    const key = denominationNames[value]; // 拿到 50
+    change[key] = Math.floor(balance / value);
+    // 算出應找個數存到 change
+    balance -= change[key] * value;
+  });
   return change;
 }
 
