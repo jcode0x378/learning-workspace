@@ -77,7 +77,7 @@ Number.parseInt('123'); // 123
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
 ```
 
-### Rest Parameters
+### Rest Parameters 不定參數
 
 ```js
 function sum(p1, p2, p3, p4, p5) {}

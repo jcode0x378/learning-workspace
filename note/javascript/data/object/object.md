@@ -111,16 +111,32 @@ Object: object, array, function (X)
 
 ### Object
 
+- 物件可以用來表示一種複合型的資料
+- 另一種資料的概念是 map/record/dictionary
+
+```js
+// map
+const students = {
+  9523: { name: '唐伯虎', score: 98 },
+  9524: { name: '祝芝山', score: 59 },
+};
+
+for (const sid in students) {
+  const student = students[sid];
+  console.log(student.name + ' 的成績是 ' + student.score);
+}
+```
+
 ```js
 // loop
-const a = { b: 2, c: 3, d: 4 };
+const a = { b: 2, c: 3, d: 4, length: 3 };
 const b = {};
 // b.b = a.b;
 // b.c = a.c;
 // b.d = a.d;
 
 for (const key in a) {
-  // console.log(key); // b c d
+  console.log(key); // b c d
   b[key] = a[key];
 }
 
@@ -144,6 +160,15 @@ obj2.b = obj1.b;
 ```
 
 ### Array
+
+```js
+const arr = ['a', 'b', 'c'];
+arr.length;
+
+for (const key in arr) {
+  console.log(key);
+}
+```
 
 ```js
 // loop (copy), we don't use `for in`, why we can only use `for in` in object
