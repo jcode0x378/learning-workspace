@@ -9,6 +9,7 @@
 // - 將取出的值取餘數
 // - 若取餘數的結果大於0，為是紀錄奇數1次
 
+// for loop version
 const numList = [1, 2, 3, 4, 5];
 let oddCount = 0;
 for (let i = 0; i < numList.length; i = i + 1) {
@@ -16,14 +17,37 @@ for (let i = 0; i < numList.length; i = i + 1) {
     oddCount = oddCount + 1;
   }
 }
+// for of version
+for (const num of numList) {
+  if (numList[num] % 2 !== 0) {
+    oddCount += 1;
+  }
+}
+// forEach version
+let oddCount1 = 0;
+numList.forEach(element => {
+  if (element % 2 !== 0) {
+    oddCount1 += 1;
+  }
+});
+console.log(oddCount1);
 
 // 9 x 9
 // let foo = 0;
-for (let i = 0; i >= 9; i = i + 1) {
-  for (let j = 0; j >= 9; j = j + 1) {
+for (let i = 0; i <= 9; i = i + 1) {
+  for (let j = 0; j <= 9; j = j + 1) {
     // foo = i * j;
     console.log(i + '*' + j + '=' + i * j);
   }
+}
+// array version
+// 先把結果存到 array
+for (let i = 1; i <= 9; i++) {
+  let row = [];
+  for (let j = 1; j <= 9; j++) {
+    row.push(`${i}*${j}=${i * j}`);
+  }
+  console.log(row.join(' ')); // 回傳字串
 }
 
 // input => scores
@@ -78,3 +102,13 @@ function sum(numList) {
 }
 
 // 聖誕樹
+for (let i = 0; i < 5; i += 1) {
+  let line = '';
+  for (let j = 0; j < 5 - i - 1; j += 1) {
+    line += ' ';
+  }
+  for (let k = 0; k < 2 * i + 1; k += 1) {
+    line += '*';
+  }
+  console.log(line);
+}

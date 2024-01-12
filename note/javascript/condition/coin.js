@@ -116,7 +116,15 @@ switch (true) {
   case score >= 0.8:
     console.log('A');
     break;
-
+  case score >= 0.9:
+    console.log('B');
+    break;
+  case score >= 0.6:
+    console.log('C');
+    break;
+  case score >= 0.2:
+    console.log('D');
+    break;
   default:
     console.log('E');
 }
